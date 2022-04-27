@@ -53,6 +53,7 @@
 				<th scope="col">Gender</th>
 				<th scope="col">Address</th>
 				<th scope="col">Phone No</th>
+				<th scope="col">E-mail</th>
 				<th scope="col">Action</th>
 			</tr>
 		</thead>
@@ -65,9 +66,10 @@
 				<td th:text="${p.gender}"></td>
 				<td th:text="${p.address}"></td>
 				<td th:text="${p.phoneno}"></td>
+				<td th:text="${p.email}"></td>
 				<td>
-				<a class="btn btn-sm btn btn-outline-primary" th:href="@{/updatePatient/{pid}(pid=${p.pid})}">Edit</a>
-				<a class="btn btn-sm btn  btn-outline-danger" th:href="@{/deletepat/{pid}(pid=${p.pid})}">Delete</a>
+				<a class="btn btn-sm btn btn-outline-primary" th:href="@{/updateDetails/{pid}(pid=${p.pid})}">Edit</a>
+				<a class="btn btn-sm btn  btn-outline-danger" th:href="@{/deleteDetails/{pid}(pid=${p.pid})}">Delete</a>
 				</td>
 			</tr>
 		</tbody>

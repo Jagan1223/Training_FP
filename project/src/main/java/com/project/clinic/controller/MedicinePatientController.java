@@ -26,33 +26,33 @@ public class MedicinePatientController {
 	@Autowired
 	private PatientService pservice;
 
-	@GetMapping("/")
+	@GetMapping("/home")
 	public String home() {
 		return "index";
 	}
 
-	@GetMapping("/addPatient")
+	@GetMapping("/RegPatient")
 	public String addPatientForm() {
 		return "addPatient";
 	}
 
-	@PostMapping("/addPatients")
+	@PostMapping("/RegPatients")
 	public String patientSave(  @ModelAttribute Patient p, HttpSession session) {
 	
 		System.out.println(p);
 		pservice.addPatient(p);
 		session.setAttribute("msg", "Patient added successfully..");
-		return "redirect:/viewPatient";
+		return "redirect:/viewDetails";
 	}
 
-	@GetMapping("/viewPatient")
+	@GetMapping("/viewDetails")
 	public String patientView(Model m) {
 		List<Patient> pat = pservice.getAllPatient();
 		m.addAttribute("patient", pat);
 		return "viewPatient";
 	}
 
-	@GetMapping("/updatePatient/{pid}")
+	@GetMapping("/updateDetails/{pid}")
 	public String patientEdit(@PathVariable String pid, Model m2) {
 
 		Patient p = pservice.getPatientById(pid);
@@ -60,19 +60,19 @@ public class MedicinePatientController {
 		return "updatePatient";
 	}
 
-	@PostMapping("/updatePatients")
+	@PostMapping("/updateDetails")
 	public String patientUpdate(@ModelAttribute Patient p, HttpSession session) {
 
 		pservice.addPatient(p);
-		session.setAttribute("msg", "Patient updated successfully..");
-		return "redirect:/viewPatient";
+		session.setAttribute("msg", "Patient data updated successfully..");
+		return "redirect:/viewDetails";
 	}
 
-	@GetMapping("/deletepat/{pid}")
+	@GetMapping("/deleteDetails/{pid}")
 	public String medDelete(@PathVariable String pid, HttpSession session) {
 		pservice.deletePatient(pid);
-		session.setAttribute("msg", "Patient deleted successfully..");
-		return "redirect:/viewPatient";
+		session.setAttribute("msg", "Patient data deleted successfully..");
+		return "redirect:/viewDetails";
 	}
 
 }

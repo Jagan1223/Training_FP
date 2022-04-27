@@ -13,8 +13,10 @@ public class Patient {
 	private String gender ;
 	private String address;
 	private long phoneno;
+	private String email;
 	
 	
+
 	public Patient() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -61,5 +63,11 @@ public class Patient {
 	}
 	public void setPhoneno(long phoneno) {
 		this.phoneno = phoneno;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }
